@@ -2,10 +2,6 @@
 
 namespace spp {
 
-uint32_t& Joint::getId() {
-  return _id;
-}
-
 void Joint::moveTo(double x, double y) {
   _pos.x = x;
   _pos.y = y;
@@ -19,7 +15,7 @@ void Joint::moveTo(const Joint& otherPoint) {
   _pos = otherPoint._pos;
 }
 
-const Vec2& Joint::getPos() {
+Vec2& Joint::getPos() {
   return _pos;
 }
 

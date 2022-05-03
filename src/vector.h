@@ -2,7 +2,6 @@
 
 #include <utility>
 #include <ostream>
-
 namespace spp {
 
 class Vec2 {
@@ -16,13 +15,14 @@ public:
 
   // operators
   Vec2 operator+(const Vec2& other);
-  Vec2& add(const Vec2& other);
-
+  
   Vec2 operator-(const Vec2& other);
-  Vec2& subtract(const Vec2& other);
 
   Vec2& operator+=(const Vec2& other);
+  Vec2& add(const Vec2& other);
+
   Vec2& operator-=(const Vec2& other);
+  Vec2& subtract(const Vec2& other);
 
   template <typename T>
   Vec2 operator*(const T& scalar) {

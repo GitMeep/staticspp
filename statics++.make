@@ -61,11 +61,15 @@ endif
 GENERATED :=
 OBJECTS :=
 
+GENERATED += $(OBJDIR)/beam.o
 GENERATED += $(OBJDIR)/joint.o
 GENERATED += $(OBJDIR)/main.o
+GENERATED += $(OBJDIR)/structure.o
 GENERATED += $(OBJDIR)/vector.o
+OBJECTS += $(OBJDIR)/beam.o
 OBJECTS += $(OBJDIR)/joint.o
 OBJECTS += $(OBJDIR)/main.o
+OBJECTS += $(OBJDIR)/structure.o
 OBJECTS += $(OBJDIR)/vector.o
 
 # Rules
@@ -133,7 +137,13 @@ endif
 $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/beam.o: src/structure/beam.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/joint.o: src/structure/joint.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/structure.o: src/structure/structure.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/vector.o: src/vector.cpp

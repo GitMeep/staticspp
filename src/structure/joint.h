@@ -2,19 +2,18 @@
 
 #include <utility>
 
+#include "structure.h"
 #include "../vector.h"
 
 namespace spp {
 
-class Joint {
+class Joint: public StructureEntity {
 public:
-  uint32_t& getId();
-
   void moveTo(double x, double y);
   void moveTo(Vec2 pos);
   void moveTo(const Joint& otherPoint);
 
-  const Vec2& getPos();
+  Vec2& getPos();
 
 protected:
   Joint();
@@ -23,7 +22,6 @@ protected:
   Joint(const Joint& copySource);
 
   Vec2 _pos;
-  uint32_t _id; // unique id among all joints in a structure
 
 };
 
