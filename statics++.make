@@ -25,7 +25,7 @@ INCLUDES += -Ilib/eigen
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-LIBS += -Wl,-Bstatic -licuuc -Wl,-Bdynamic -lpthread -lssl -lcrypto -lcryptopp -lz -lfmt -lcurl -lbsoncxx -lmongocxx -lPocoFoundation -lPocoNet -lPocoNetSSL
+LIBS +=
 LDDEPS +=
 LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
 define PREBUILDCMDS
@@ -61,8 +61,10 @@ endif
 GENERATED :=
 OBJECTS :=
 
+GENERATED += $(OBJDIR)/joint.o
 GENERATED += $(OBJDIR)/main.o
 GENERATED += $(OBJDIR)/vector.o
+OBJECTS += $(OBJDIR)/joint.o
 OBJECTS += $(OBJDIR)/main.o
 OBJECTS += $(OBJDIR)/vector.o
 
@@ -129,6 +131,9 @@ endif
 # #############################################
 
 $(OBJDIR)/main.o: src/main.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/joint.o: src/structure/joint.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/vector.o: src/vector.cpp

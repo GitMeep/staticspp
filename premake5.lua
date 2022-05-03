@@ -14,19 +14,7 @@ project "statics++"
         "lib/eigen/"
     }
     links {
-        "pthread",
-        "icuuc:static",
-        "ssl",
-        "crypto",
-        "cryptopp",
-        "z",
-        "fmt",
-        "curl",
-        "bsoncxx",
-        "mongocxx",
-        "PocoFoundation",
-        "PocoNet",
-        "PocoNetSSL"
+        
     }
 
     filter "configurations:Debug"
